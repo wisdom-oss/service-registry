@@ -5,7 +5,7 @@ RUN mvn -f /usr/src/app/pom.xml clean package
 
 FROM amazoncorretto:17-alpine3.14
 COPY --from=build /usr/src/app/target/service-registry-*.jar /opt/service-registry/service-registry.jar
-EXPOSE 8090
+EXPOSE 8761
 ENTRYPOINT ["java", "-jar", "/opt/service-registry/service-registry.jar"]
 ENV SPRING_PROFILES_ACTIVE=production
 ENV SERVICE_REGISTRY_HOSTNAME=service-registry
